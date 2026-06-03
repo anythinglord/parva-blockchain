@@ -28,6 +28,8 @@ Chain strategy: pending
 
 ## Grupo 1: Project Scaffold
 
+- [x] **1.1** go mod init + .gitignore
+
 ```yaml
 id: "1.1"
 name: go mod init + .gitignore
@@ -42,6 +44,8 @@ acceptance:
   - ".gitignore excludes binaries, IDE, OS files"
 dependencies: []
 ```
+
+- [x] **1.2** Clean Architecture folder tree + doc.go + cmd/node/main.go
 
 ```yaml
 id: "1.2"
@@ -58,6 +62,8 @@ acceptance:
   - "All 9 internal packages have doc.go"
 dependencies: ["1.1"]
 ```
+
+- [x] **1.3** Add secp256k1 dependency
 
 ```yaml
 id: "1.3"
@@ -78,6 +84,8 @@ dependencies: ["1.2"]
 
 ## Grupo 2: Hash Functions
 
+- [x] **2.1** RED — Write hash tests
+
 ```yaml
 id: "2.1"
 name: "RED — Write hash tests"
@@ -97,6 +105,8 @@ acceptance:
 dependencies: ["1.3"]
 ```
 
+- [x] **2.2** GREEN — Implement HashSHA256 and HashDoubleSHA256
+
 ```yaml
 id: "2.2"
 name: "GREEN — Implement HashSHA256 and HashDoubleSHA256"
@@ -115,6 +125,8 @@ acceptance:
   - "HashSHA256(nil) returns SHA-256(\"\"), no panic"
 dependencies: ["2.1"]
 ```
+
+- [x] **2.3** REFACTOR — Clean up hash code
 
 ```yaml
 id: "2.3"

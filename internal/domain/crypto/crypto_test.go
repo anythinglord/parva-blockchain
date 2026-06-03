@@ -2,39 +2,11 @@ package crypto
 
 import (
 	"bytes"
+	"crypto/rand"
 	"crypto/sha256"
 	"encoding/hex"
-	"math/rand"
 	"testing"
 )
-
-// Known test vectors from crypto/hash.md spec.
-var knownVectors = []struct {
-	name     string
-	input    []byte
-	expected string // SHA-256 hex
-}{
-	{
-		name:     "hello",
-		input:    []byte("hello"),
-		expected: "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824",
-	},
-	{
-		name:     "empty",
-		input:    []byte{},
-		expected: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-	},
-	{
-		name:     "nil",
-		input:    nil,
-		expected: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-	},
-	{
-		name:     "parva-blockchain",
-		input:    []byte("parva-blockchain"),
-		expected: "", // computed at test time via stdlib
-	},
-}
 
 func TestHashSHA256(t *testing.T) {
 	tests := []struct {

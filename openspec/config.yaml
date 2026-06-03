@@ -1,0 +1,49 @@
+# openspec/config.yaml
+schema: spec-driven
+
+context: |
+  Tech stack: Go 1.25.5, libp2p (planned), ECDSA/secp256k1 (planned)
+  Architecture: Clean Architecture / Hexagonal (planned, not yet created)
+  Testing: Go standard testing (+bench), no test files yet (Fase 1 pending)
+  Style: Idiomatic Go, strict TDD lifecycle (RED-GREEN-REFACTOR), GitFlow
+  Conventions: AGENTS.md mandates TDD, Clean Architecture, GitFlow, .env isolation
+
+testing:
+  strict_tdd: true
+  runner: go test
+  layers:
+    unit: true
+    integration: false
+    e2e: false
+  coverage:
+    available: true
+    command: go test -cover ./...
+  quality:
+    linter: staticcheck
+    type_checker: go vet
+    formatter: gofmt
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Reference AGENTS.md conventions explicitly
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Include package dependency diagrams for domain/infra boundaries
+    - Document architecture decisions with rationale
+  tasks:
+    - Group by Fase (1-9), use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    - Follow Clean Architecture boundaries (domain → application → infrastructure)
+    tdd: true
+    test_command: go test ./...
+  verify:
+    test_command: go test -v -cover ./...
+    build_command: go build ./...
+    coverage_threshold: 0
+  archive:
+    - Merge deltas into openspec/specs/{domain}/spec.md
+    - Warn before merging destructive deltas

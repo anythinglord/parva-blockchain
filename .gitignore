@@ -1,1 +1,18 @@
+# Environment
 .env
+
+# Go binaries
+*.exe
+*.test
+*.out
+*.test.exe
+
+# Vendor
+/vendor/
+
+# IDEs
+.idea/
+.vscode/
+
+# OS
+.DS_Store

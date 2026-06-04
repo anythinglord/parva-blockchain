@@ -8,13 +8,13 @@
 | Riesgo presupuesto 400 líneas | Medio |
 | Chained PRs recomendado | No |
 | Split sugerido | PR único |
-| Delivery strategy | ask-on-risk |
-| Chain strategy | pending |
+| Delivery strategy | ask-on-risk → feature-branch-chain (resolved) |
+| Chain strategy | feature-branch-chain |
 
 ```
-Decision needed before apply: Yes
-Chained PRs recommended: No
-Chain strategy: pending
+Decision needed before apply: Resolved — feature-branch-chain
+Chained PRs: 2 slices (1: Scaffold+Hash, 2: Keygen+Sign/Verify)
+Chain strategy: feature-branch-chain
 400-line budget risk: Medium
 ```
 
@@ -151,6 +151,8 @@ dependencies: ["2.2"]
 
 ## Grupo 3: Key Generation
 
+- [x] **3.1** RED — Write keygen tests
+
 ```yaml
 id: "3.1"
 name: "RED — Write keygen tests"
@@ -170,6 +172,8 @@ acceptance:
 dependencies: ["1.3", "2.3"]
 ```
 
+- [x] **3.2** GREEN — Implement GenerateKeyPair and PublicKeyFromPrivateKey
+
 ```yaml
 id: "3.2"
 name: "GREEN — Implement GenerateKeyPair and PublicKeyFromPrivateKey"
@@ -188,6 +192,8 @@ acceptance:
   - "PublicKeyFromPrivateKey(nil) returns error"
 dependencies: ["3.1"]
 ```
+
+- [x] **3.3** REFACTOR — Validate keygen error paths
 
 ```yaml
 id: "3.3"
@@ -212,6 +218,8 @@ dependencies: ["3.2"]
 
 ## Grupo 4: Sign & Verify
 
+- [x] **4.1** RED — Write sign/verify tests
+
 ```yaml
 id: "4.1"
 name: "RED — Write sign/verify tests"
@@ -230,6 +238,8 @@ acceptance:
   - "Table-driven with t.Run subtests"
 dependencies: ["3.3"]
 ```
+
+- [x] **4.2** GREEN — Implement Sign and Verify
 
 ```yaml
 id: "4.2"
@@ -250,6 +260,8 @@ acceptance:
 dependencies: ["4.1"]
 ```
 
+- [x] **4.3** REFACTOR — Nil/empty safety and concurrency test
+
 ```yaml
 id: "4.3"
 name: "REFACTOR — Nil/empty safety and concurrency test"
@@ -268,6 +280,8 @@ acceptance:
   - "All edge cases from specs handled"
 dependencies: ["4.2"]
 ```
+
+- [x] **4.4** FINAL VERIFY — Full suite
 
 ```yaml
 id: "4.4"

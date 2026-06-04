@@ -148,8 +148,3 @@ Verify(publicKey [33]byte, msg []byte, sig []byte):
 | Non-deterministic sigs flaky in CI | Medium | Low | Tests use `Verify()` not byte comparison; no flakiness |
 | Module path mismatch | Low | High | Confirm with `git remote -v`: `github.com/anythinglord/parva-blockchain` |
 | Placeholder packages fail `staticcheck` | Low | Low | `doc.go` only — `package X` compiles fine, `staticcheck` skips empty packages |
-
-## Open Questions
-
-- [ ] Final module path: `github.com/anythinglord/parva-blockchain` (from git remote) or `github.com/gentleman-programming/mini-blockchain` (from exploration)? — Resolved: use git remote.
-- [ ] Should `main.go` in root be deleted or kept as redirect? — Design says delete, move to `cmd/node/`.
